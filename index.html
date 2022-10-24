@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Online Html Editor v4">
+    <meta name="keywords" content="code editor, html editor, editor">
+    <meta name="copyright" content="amit gajare">
+    <meta name="subtitle" content="Free Html Editor">
+    <meta name="rating" content="General">
+    <meta name="owner" content="Amit Gajare">
+    <meta name="author" content="Amit GAjare">
+  <title>HTML Editor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Raleway:wght@300&family=Silkscreen&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'><link rel="stylesheet" href="./style.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="desktop.css">
+</head>
+<body>
+
+  <!-- header  -->
+  <header class="header">
+    <input class="input" id="inputFileNameToSaveAs" placeholder="Enter Name" value="index.html" autocomplete="off">
+  </header>
+
+  <!-- main box  -->
+  <section class="main" id="mainbox">
+    <textarea id="inputTextToSave" class="codebox" placeholder="Write Here Code">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+&lt;title&gt;Project X&lt;/title&gt;
+&lt;style&gt;
+
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ &lt;h1&gt;Hello, Amit&lt;/h1&gt;             
+&lt;script&gt;
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    </textarea>
+    <div class="button">
+      <button class="runbtn" id="runbtn" onclick="runcode()">RUN</button>
+      <button id="copybtn" onclick="myFunction()">COPY</button>
+      <button id="downbtn" onclick="saveTextAsFile()">DOWNLOAD</button>
+    </div>
+    <div class="loadfile">
+      <input type="file" id="fileUpload" />
+    </div>
+  </section>
+
+  <!-- pop box -->
+  
+
+  <!-- output display  -->
+  <div id="output">
+    <button class="backbtn" onclick="back()">Back</button>
+    <iframe id="display"></iframe>
+  </div>
+
+  <!-- footer  -->
+  <footer id="footer">
+  <img src="logo.png" alt="logo.png" class="footer_logo">
+  <div class="copyright" >
+    <script>
+      document.write('&copy;' );
+      document.write(' 2020 - ');
+      document.write(new Date().getFullYear());
+      document.write(' Amit Gajare - All Rights Reserved.');
+        </script> 
+      </div>
+  </footer>
+
+  <div class="fab-wrapper">
+    <input id="fabCheckbox" type="checkbox" class="fab-checkbox" />
+    <label class="fab" for="fabCheckbox">
+      <span class="fab-dots fab-dots-1"></span>
+      <span class="fab-dots fab-dots-2"></span>
+      <span class="fab-dots fab-dots-3"></span>
+    </label>
+    <div class="fab-wheel">
+      <a class="fab-action fab-action-1" onclick="darkmod()">
+        <i class="fas fa-moon"></i>
+      </a>
+      <a class="fab-action fab-action-2" href="https://amitgajare.hashnode.dev/" target="_blank">
+        <i class="fas fa-skull"></i>
+      </a>
+          <a class="fab-action fab-action-3" href="https://colorhunt.co/" target="_blank">
+        <i class="fas fa-palette"></i>
+      </a>
+          <a class="fab-action fab-action-4">
+        <i class="fas fa-share"></i>
+      </a>
+    </div>
+  </div>
+  <!-- Project -->
+  <script>
+function saveTextAsFile(){
+	var textToSave = document.getElementById("inputTextToSave").value;
+	var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+	var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+	var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+
+	var downloadLink = document.createElement("a");
+	downloadLink.download = fileNameToSaveAs;
+	downloadLink.innerHTML = "Download File";
+	downloadLink.href = textToSaveAsURL;
+	downloadLink.onclick = destroyClickedElement;
+	downloadLink.style.display = "none";
+	document.body.appendChild(downloadLink);
+
+	downloadLink.click();
+}
+
+function destroyClickedElement(event){
+	document.body.removeChild(event.target);
+}
+  </script>
+  <script src="main.js"></script>
+</body>
+</html>
+
+<!--
+font-family: 'Dosis', sans-serif;
+font-family: 'Silkscreen', cursive;
+font-family: 'Raleway', sans-serif;
+-->
